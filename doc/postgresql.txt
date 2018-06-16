@@ -3,3 +3,24 @@ docker exec -it postgres psql -U postgres
 
 CREATE USER november ENCRYPTED PASSWORD 'november';
 CREATE DATABASE november WITH OWNER = november;
+
+docker exec -it postgres psql -U november
+
+CREATE TABLE "user" (
+  "username" VARCHAR(100) PRIMARY KEY,
+  "password" CHAR(60)
+);
+
+CREATE TABLE "role" (
+    "role_name" VARCHAR(100) PRIMARY KEY
+);
+
+CREATE TABLE "user_role" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR(100) REFERENCES "user"(username) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    "role_name" VARCHAR(100) REFERENCES "role"(role_name) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+==
+drop table "user_role";
+drop table "user";
+drop table "role";
