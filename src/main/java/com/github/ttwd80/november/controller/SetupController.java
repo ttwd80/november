@@ -18,12 +18,12 @@ public class SetupController {
 		this.databaseService = databaseService;
 	}
 
-	@RequestMapping("/setup")
+	@RequestMapping("/setup/setup")
 	public ModelAndView setup() {
 		if (databaseService.isSetuUp()) {
 			return new ModelAndView("redirect:/index");
 		} else {
-			return new ModelAndView("setup");
+			return new ModelAndView("setup/setup");
 		}
 	}
 }
