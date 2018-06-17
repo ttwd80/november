@@ -23,7 +23,7 @@ public class IndexController {
 		if (databaseService.isSetuUp()) {
 			return new ModelAndView("index");
 		} else {
-			return new ModelAndView("redirect:/setup");
+			return new ModelAndView("redirect:/setup/setup");
 		}
 	}
 }
