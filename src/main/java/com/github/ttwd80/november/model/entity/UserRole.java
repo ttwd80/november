@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +23,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-
+@AllArgsConstructor
+@Builder
 public class UserRole {
 
 	@Id

@@ -16,7 +16,7 @@
 		<property name="hierarchy">
 			<value>
 				ROLE_ADMIN > ROLE_USER
-				ROLE_USER > ROLE_ANONYMOUS
+				ROLE_USER > IS_AUTHENTICATED_ANONYMOUSLY
 			</value>
 		</property>
 	</bean>

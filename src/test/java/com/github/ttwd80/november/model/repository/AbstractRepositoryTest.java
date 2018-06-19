@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 
 import com.github.ttwd80.november.model.service.DatabaseTestInit;
 import com.zaxxer.hikari.HikariDataSource;
@@ -21,7 +20,6 @@ public class AbstractRepositoryTest {
 	static class NestedConfiguration {
 
 		@Bean
-		@Primary
 		public DataSource dataSource() throws Exception {
 			HikariDataSource dataSource = new HikariDataSource();
 			Map<String, String> map = System.getenv();
@@ -29,7 +27,7 @@ public class AbstractRepositoryTest {
 			dataSource.setPassword(map.get("SPRING_DATASOURCE_PASSWORD"));
 			dataSource.setJdbcUrl(map.get("SPRING_DATASOURCE_URL"));
 			dataSource.setDriverClassName("org.postgresql.Driver");
-
+			dataSource.setAutoCommit(false);
 			DatabaseTestInit databaseTestInit = new DatabaseTestInit(dataSource);
 			databaseTestInit.afterPropertiesSet();
 			return dataSource;

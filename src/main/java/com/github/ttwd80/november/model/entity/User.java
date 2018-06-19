@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +21,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
 
 	@Id
@@ -30,6 +34,7 @@ public class User {
 
 	@OneToMany
 	@JoinColumn(name = "username")
+	@Builder.Default
 	private Set<UserRole> userRoles = new HashSet<>();
 
 }

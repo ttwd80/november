@@ -22,8 +22,27 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form th:action="@{/setup/init}">
-					<div class="form-group">
+				<form th:action="@{/setup/init}" action="#" method="post">
+					<div class="form-group row">
+						<label>Set password for <strong>admin</strong></label>
+					</div>
+					<div class="form-group row">
+						<label for="admin-password" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input id="admin-password" name="password" class="form-control"
+								type="password" required="required" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="admin-password-confirm"
+							class="col-sm-2 col-form-label">Confirm Password</label>
+						<div class="col-sm-10">
+							<input id="admin-password-confirm" class="form-control"
+								type="password" required="required" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
 					</div>
 				</form>
 			</div>
