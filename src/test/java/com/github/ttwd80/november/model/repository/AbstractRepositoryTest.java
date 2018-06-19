@@ -34,7 +34,6 @@ public class AbstractRepositoryTest {
 
 			DatabaseTestInit databaseTestInit = new DatabaseTestInit(dataSource);
 			databaseTestInit.afterPropertiesSet();
-			System.err.println(dataSource);
 			return dataSource;
 		}
 	}
