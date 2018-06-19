@@ -49,6 +49,5 @@ public class DatabaseTestInit implements InitializingBean {
 			return null;
 		};
 		txTemplate.execute(action);
-		System.out.println("done!");
 	};
 }
