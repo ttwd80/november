@@ -10,16 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.github.ttwd80.november.model.entity.User;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration({ "classpath:test-database-blank.xml" })
-@Transactional
-class UserRepositoryTest {
+class UserRepositoryTest extends AbstractRepositoryTest {
 
 	@Autowired
 	UserRepository userRepository;
