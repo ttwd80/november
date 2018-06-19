@@ -10,12 +10,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.test.context.ActiveProfiles;
 
 import com.github.ttwd80.november.model.service.DatabaseTestInit;
 import com.zaxxer.hikari.HikariDataSource;
 
-@ActiveProfiles("integration")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class AbstractRepositoryTest {
