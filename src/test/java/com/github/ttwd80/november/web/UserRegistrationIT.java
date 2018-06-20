@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -30,7 +30,7 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 
 	@Test
 	void test() {
-		WebDriver webDriver = new ChromeDriver();
+		WebDriver webDriver = new FirefoxDriver();
 		webDriver.get(BASE_URL + "/");
 		webDriver.findElement(By.id("admin-password")).sendKeys("xxx");
 		webDriver.findElement(By.id("admin-password-confirm")).sendKeys("xxx");
