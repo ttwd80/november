@@ -1,5 +1,7 @@
 package com.github.ttwd80.november.web;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
@@ -17,12 +19,14 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 
 	@Test
 	void testGivenDatabaseIsEmptyWhenWebRootIsAccessedThenUrlIsSetupSetup() {
+		assertEquals(0L, userRepository.count());
 		webDriver.get(BASE_URL + "/");
 		webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
 	}
 
 	@Test
 	void testGivenUserHasAccessedSetupSetupWhenPageIsViewedThenChangePasswordFieldIsPresent() {
+		assertEquals(0L, userRepository.count());
 		webDriver.get(BASE_URL + "/");
 		webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
 		webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("admin-password")));
@@ -30,6 +34,7 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 
 	@Test
 	void testGivenUserCanSeeThePasswordResetFormWhenUserSubmitsItThenItShouldWork() {
+		assertEquals(0L, userRepository.count());
 		webDriver.get(BASE_URL + "/");
 		webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
 		webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("admin-password")));
@@ -41,6 +46,7 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 
 	@Test
 	void testGivenPasswordCanBeChangedWhenUserTriesToLoginThenItShouldWork() {
+		assertEquals(0L, userRepository.count());
 		webDriver.get(BASE_URL + "/");
 		webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
 		webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("admin-password")));
