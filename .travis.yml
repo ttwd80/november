@@ -4,6 +4,8 @@ jdk:
   - openjdk10
 services:
   - postgresql
+addons:
+  chrome: stable
 before_script:
   - psql -c "CREATE USER nznz4fjn ENCRYPTED PASSWORD '3h6kov63tt4xvo8q';" -U postgres
   - psql -c "CREATE DATABASE sjzoatpd WITH OWNER = nznz4fjn;" -U postgres
