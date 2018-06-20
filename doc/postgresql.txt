@@ -2,6 +2,7 @@ docker run --name postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 postgre
 docker exec -it postgres psql -U postgres
 
 CREATE USER november ENCRYPTED PASSWORD 'november';
+DROP DATABASE IF EXISTS november;  
 CREATE DATABASE november WITH OWNER = november;
 CREATE DATABASE novembertest WITH OWNER = november;
 
