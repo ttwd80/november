@@ -160,6 +160,7 @@
 								<context>/</context>
 							</properties>
 							<pingURL>http://localhost:58080/blank.txt</pingURL>
+							<pingTimeout>60000</pingTimeout>
 						</deployable>
 					</deployables>
 				</configuration>
