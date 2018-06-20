@@ -64,6 +64,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
+
 		<!-- webjar -->
 		<!-- https://mvnrepository.com/artifact/org.webjars.bower/popper.js -->
 		<dependency>
