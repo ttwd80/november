@@ -144,7 +144,6 @@
 				<configuration>
 					<container>
 						<containerId>tomcat9x</containerId>
-						<timeout>300000</timeout>
 						<zipUrlInstaller>
 							<url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcat.version}/tomcat-${tomcat.version}.zip</url>
 						</zipUrlInstaller>
@@ -171,9 +170,6 @@
 						<goals>
 							<goal>start</goal>
 						</goals>
-						<configuration>
-							<timeout>450000</timeout>
-						</configuration>
 					</execution>
 					<execution>
 						<id>stop-container</id>
