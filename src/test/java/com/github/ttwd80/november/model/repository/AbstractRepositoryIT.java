@@ -12,11 +12,13 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.test.annotation.Rollback;
 
 import com.github.ttwd80.november.model.service.DatabaseTestInit;
 import com.zaxxer.hikari.HikariDataSource;
 
 @DataJpaTest
+@Rollback(false)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class AbstractRepositoryIT {
 
