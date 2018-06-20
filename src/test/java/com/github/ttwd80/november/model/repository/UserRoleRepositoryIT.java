@@ -4,10 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +16,11 @@ import com.github.ttwd80.november.model.entity.UserRole;
 @ExtendWith(SpringExtension.class)
 class UserRoleRepositoryIT extends AbstractRepositoryIT {
 
-	@PersistenceContext
-	EntityManager entityManager;
-
 	@Autowired
 	RoleRepository roleRepository;
 
 	@Autowired
 	UserRoleRepository userRoleRepository;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		userRoleRepository.deleteAll();
-		entityManager.createQuery("delete from User").executeUpdate();
-		entityManager.createQuery("delete from Role").executeUpdate();
-	}
 
 	@Test
 	void testNoInsertion() {

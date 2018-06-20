@@ -2,8 +2,11 @@ package com.github.ttwd80.november.model.repository;
 
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -16,6 +19,17 @@ import com.zaxxer.hikari.HikariDataSource;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class AbstractRepositoryIT {
+
+	@PersistenceContext
+	EntityManager entityManager;
+
+	@BeforeEach
+	protected void setUp() throws Exception {
+		entityManager.createQuery("delete from UserRole").executeUpdate();
+		entityManager.createQuery("delete from User").executeUpdate();
+		entityManager.createQuery("delete from Role").executeUpdate();
+	}
+
 	@TestConfiguration
 	static class NestedConfiguration {
 

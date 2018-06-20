@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,6 @@ class UserRepositoryIT extends AbstractRepositoryIT {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		userRepository.deleteAll();
-	}
 
 	@Test
 	void testNoInsertion() {

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,6 @@ class RoleRepositoryIT extends AbstractRepositoryIT {
 
 	@Autowired
 	RoleRepository roleRepository;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		roleRepository.deleteAll();
-	}
 
 	@Test
 	void testNoInsertion() {
