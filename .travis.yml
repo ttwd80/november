@@ -2,8 +2,8 @@ language: java
 services:
   - postgresql
 before_script:
-  - psql -c "CREATE USER 4hb3qijw ENCRYPTED PASSWORD '4hb3qijw';" -U postgres
-  - psql -c "CREATE DATABASE sjzoatpd WITH OWNER = 4hb3qijw;" -U postgres
+  - psql -c "CREATE USER nznz4fjn ENCRYPTED PASSWORD '3h6kov63tt4xvo8q';" -U postgres
+  - psql -c "CREATE DATABASE sjzoatpd WITH OWNER = nznz4fjn;" -U postgres
   - echo "localhost:5432:sjzoatpd:4hb3qijw:4hb3qijw" > ~/.pgpass
    
   
