@@ -4,7 +4,7 @@ services:
 before_script:
   - psql -c "CREATE USER nznz4fjn ENCRYPTED PASSWORD '3h6kov63tt4xvo8q';" -U postgres
   - psql -c "CREATE DATABASE sjzoatpd WITH OWNER = nznz4fjn;" -U postgres
-  - echo "localhost:5432:sjzoatpd:4hb3qijw:4hb3qijw" > ~/.pgpass
+  - echo "localhost:5432:sjzoatpd:nznz4fjn:3h6kov63tt4xvo8q" > ~/.pgpass
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
