@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -14,8 +15,11 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 	@Test
 	void testGivenDatabaseIsEmptyWhenWebRootIsAccessedThenUrlIsSetupSetup() {
 		webDriver.get(BASE_URL + "/");
-		webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
-		assertEquals(BASE_URL + "/setup/setup", webDriver.getCurrentUrl());
+		try {
+			webDriverWait.until(ExpectedConditions.urlContains("setup/setup"));
+		} catch (TimeoutException e) {
+			assertEquals(BASE_URL + "/setup/setup", webDriver.getCurrentUrl());
+		}
 	}
 
 	@Test
@@ -27,7 +31,7 @@ class UserRegistrationIT extends AbstractSeleniumIT {
 	@Test
 	void testGivenUserCanSeeThePasswordResetFormWhenUserSubmitsItThenItShouldWork() {
 		webDriver.get(BASE_URL + "/");
-		webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.name("username")));
+		webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("admin-password")));
 		webDriver.findElement(By.id("admin-password")).sendKeys("xxx");
 		webDriver.findElement(By.id("admin-password-confirm")).sendKeys("xxx");
 		webDriver.findElement(By.id("button-submit")).click();
