@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.github.ttwd80.november.model.entity.Role;
 
 @ExtendWith(SpringExtension.class)
-class RoleRepositoryTest extends AbstractRepositoryTest {
+class RoleRepositoryIT extends AbstractRepositoryIT {
 
 	@Autowired
 	RoleRepository roleRepository;

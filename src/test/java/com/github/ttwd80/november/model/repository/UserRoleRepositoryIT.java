@@ -18,7 +18,7 @@ import com.github.ttwd80.november.model.entity.User;
 import com.github.ttwd80.november.model.entity.UserRole;
 
 @ExtendWith(SpringExtension.class)
-class UserRoleRepositoryTest extends AbstractRepositoryTest {
+class UserRoleRepositoryIT extends AbstractRepositoryIT {
 
 	@PersistenceContext
 	EntityManager entityManager;

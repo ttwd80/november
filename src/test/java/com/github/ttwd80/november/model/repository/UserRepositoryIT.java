@@ -15,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.github.ttwd80.november.model.entity.User;
 
 @ExtendWith(SpringExtension.class)
-class UserRepositoryTest extends AbstractRepositoryTest {
+class UserRepositoryIT extends AbstractRepositoryIT {
 
 	@Autowired
 	UserRepository userRepository;

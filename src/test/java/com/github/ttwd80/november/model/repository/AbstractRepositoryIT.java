@@ -15,7 +15,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-public class AbstractRepositoryTest {
+public class AbstractRepositoryIT {
 	@TestConfiguration
 	static class NestedConfiguration {
 
