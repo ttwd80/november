@@ -7,7 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.ttwd80.november.model.service.DatabaseService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class IndexController {
 
 	private final DatabaseService databaseService;
@@ -21,8 +24,10 @@ public class IndexController {
 	@RequestMapping("/")
 	public ModelAndView index() {
 		if (databaseService.isAnyUserRegistered()) {
+			log.info("At least one user exists");
 			return new ModelAndView("redirect:/content");
 		} else {
+			log.info("No user exists");
 			return new ModelAndView("redirect:/setup/setup");
 		}
 	}
