@@ -23,6 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<tomcat.version>9.0.8</tomcat.version>
 	</properties>
 
 	<dependencies>
@@ -132,6 +133,53 @@
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.6.8</version>
+				<configuration>
+					<container>
+						<containerId>tomcat9x</containerId>
+						<timeout>300000</timeout>
+						<zipUrlInstaller>
+							<url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcat.version}/tomcat-${tomcat.version}.zip</url>
+						</zipUrlInstaller>
+					</container>
+					<configuration>
+						<properties>
+							<cargo.tomcat.ajp.port>58009</cargo.tomcat.ajp.port>
+							<cargo.servlet.port>58080</cargo.servlet.port>
+						</properties>
+					</configuration>
+					<deployables>
+						<deployable>
+							<properties>
+								<context>/</context>
+							</properties>
+							<pingURL>http://localhost:58080/blank.txt</pingURL>
+						</deployable>
+					</deployables>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+						<configuration>
+							<timeout>450000</timeout>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
 						</goals>
 					</execution>
 				</executions>
