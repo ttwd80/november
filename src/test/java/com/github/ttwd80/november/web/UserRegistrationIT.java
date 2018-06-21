@@ -4,16 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import com.github.ttwd80.november.model.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 class UserRegistrationIT extends AbstractSeleniumIT {
-
-	@Autowired
-	UserRepository userRepository;
 
 	@Test
 	void testGivenDatabaseIsEmptyWhenWebRootIsAccessedThenUrlIsSetupSetup() {

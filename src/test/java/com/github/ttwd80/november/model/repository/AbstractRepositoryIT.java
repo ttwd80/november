@@ -2,7 +2,6 @@ package com.github.ttwd80.november.model.repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +52,7 @@ public class AbstractRepositoryIT {
 	@Rollback(false)
 	protected void setUp() throws Exception {
 		final Queue<String> queue = new LinkedList<>(listEntities());
-		log.info("trying to delete " + queue);
+		log.debug("trying to delete " + queue);
 		TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
 		transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		while (!queue.isEmpty()) {
@@ -68,17 +67,17 @@ public class AbstractRepositoryIT {
 				queue.offer(entity);
 			}
 		}
-		log.info("Data cleared");
+		log.debug("Data cleared");
 	}
 
 	private List<String> listEntities() throws IOException {
 		List<String> list = new ArrayList<>();
 		Class<User> c = User.class;
-		ClassPath x = ClassPath.from(c.getClassLoader());
 		String name = c.getName();
 		int index = name.lastIndexOf('.');
 		if (index >= 0) {
 			String packageName = name.substring(0, index);
+			ClassPath x = ClassPath.from(c.getClassLoader());
 			ImmutableSet<ClassInfo> items = x.getTopLevelClasses(packageName);
 			for (ClassInfo item : items) {
 				list.add(item.getSimpleName());
@@ -86,7 +85,6 @@ public class AbstractRepositoryIT {
 		} else {
 			log.info("Unable to process class with name : {}", name);
 		}
-		Collections.sort(list);
 		return list;
 	}
 
@@ -107,5 +105,4 @@ public class AbstractRepositoryIT {
 			return dataSource;
 		}
 	}
-
 }
