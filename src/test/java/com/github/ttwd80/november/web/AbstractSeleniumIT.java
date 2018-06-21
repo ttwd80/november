@@ -1,10 +1,14 @@
 package com.github.ttwd80.november.web;
 
+import javax.sql.DataSource;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.ttwd80.november.model.repository.AbstractRepositoryIT;
 
@@ -18,9 +22,14 @@ public class AbstractSeleniumIT extends AbstractRepositoryIT {
 
 	@BeforeEach
 	protected void setUp() throws Exception {
-		webDriver = new FirefoxDriver();
-		webDriverWait = new WebDriverWait(webDriver, 5);
 		super.setUp();
+		webDriver = new FirefoxDriver();
+		webDriverWait = new WebDriverWait(webDriver, 60 * 10);
+	}
+
+	@AfterEach
+	protected void tearDown() throws Exception {
+		webDriver.quit();
 	}
 
 }
