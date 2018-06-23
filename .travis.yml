@@ -7,9 +7,8 @@ services:
 addons:
   firefox: latest
 before_script:
-  - psql -c "CREATE USER nznz4fjn ENCRYPTED PASSWORD '3h6kov63tt4xvo8q';" -U postgres
-  - psql -c "CREATE DATABASE sjzoatpd WITH OWNER = nznz4fjn;" -U postgres
-  - echo "localhost:5432:sjzoatpd:nznz4fjn:3h6kov63tt4xvo8q" > ~/.pgpass
+  - psql -c "CREATE USER ${SPRING_DATASOURCE_USERNAME} ENCRYPTED PASSWORD '${SPRING_DATASOURCE_PASSWORD}';" -U postgres
+  - psql -c "CREATE DATABASE ${SPRING_DATASOURCE_DATABASE} WITH OWNER = ${SPRING_DATASOURCE_USERNAME};" -U postgres
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
@@ -20,9 +19,7 @@ before_script:
   - sudo chmod +x /usr/local/share/geckodriver
   - sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 script:
-  - mvn clean jacoco:report verify
-after_success:
-  - mvn coveralls:report -DrepoToken=${COVERALLS_REPO_TOKEN}
+  - mvn clean test jacoco:report coveralls:report -DrepoToken=${COVERALLS_REPO_TOKEN} verify
 cache:
   directories:
   - $HOME/.m2
