@@ -20,7 +20,9 @@ before_script:
   - sudo chmod +x /usr/local/share/geckodriver
   - sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 script:
-  - mvn clean verify
+  - mvn clean jacoco:report verify
+after_success:
+  - mvn coveralls:report
 cache:
   directories:
   - $HOME/.m2
