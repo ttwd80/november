@@ -17,11 +17,13 @@ public class AbstractSeleniumIT extends AbstractRepositoryIT {
 
 	protected Wait<WebDriver> webDriverWait;
 
+	protected final int WEB_DRIVER_WAIT = 5;
+
 	@BeforeEach
 	protected void setUp() throws Exception {
 		super.setUp();
 		webDriver = new FirefoxDriver();
-		webDriverWait = new WebDriverWait(webDriver, 60 * 10);
+		webDriverWait = new WebDriverWait(webDriver, WEB_DRIVER_WAIT);
 	}
 
 	@AfterEach
