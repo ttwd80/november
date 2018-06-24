@@ -45,15 +45,17 @@ public class DatabaseServiceImpl implements DatabaseService {
 	@Override
 	@Transactional
 	public void initDatabase(String initialAdminPassword) {
-		Role role = Role.builder().rolename("ROLE_ADMIN").build();
-		role = roleRepository.save(role);
-
 		final String hashed = passwordEncoder.encode(initialAdminPassword);
 		User user = User.builder().username("admin").password(hashed).build();
 		user = userRepository.save(user);
 
-		final UserRole userRole = UserRole.builder().username(user).rolename(role).build();
-		userRoleRepository.save(userRole);
-	}
+		String[] roles = { "ROLE_ADMIN", "ROLE_USER" };
+		for (String value : roles) {
+			Role role = Role.builder().rolename(value).build();
+			role = roleRepository.save(role);
 
+			final UserRole userRole = UserRole.builder().username(user).rolename(role).build();
+			userRoleRepository.save(userRole);
+		}
+	}
 }
