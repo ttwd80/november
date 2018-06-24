@@ -30,7 +30,6 @@ public class JpaUserDetailsService implements UserDetailsService {
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		List<UserRole> items = userRoleRepository.findByUsernameUsername(username);
 		if (items.size() == 0) {
 			throw new UsernameNotFoundException(username);
