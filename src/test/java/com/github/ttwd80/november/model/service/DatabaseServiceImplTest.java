@@ -3,6 +3,7 @@ package com.github.ttwd80.november.model.service;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -65,8 +66,8 @@ class DatabaseServiceImplTest {
 		sut.initDatabase("secret");
 		verify(passwordEncoder).encode("secret");
 		verify(userRepository).save(any(User.class));
-		verify(roleRepository).save(any(Role.class));
-		verify(userRoleRepository).save(any(UserRole.class));
+		verify(roleRepository, atLeastOnce()).save(any(Role.class));
+		verify(userRoleRepository, atLeastOnce()).save(any(UserRole.class));
 	}
 
 }
